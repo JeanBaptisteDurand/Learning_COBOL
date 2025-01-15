@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. LoopAndEvaluateDemo.
+       PROGRAM-ID. Perform.
        
        DATA DIVISION.
        WORKING-STORAGE SECTION.

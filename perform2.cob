@@ -1,5 +1,5 @@
        IDENTIFICATION DIVISION.
-       PROGRAM-ID. PerformExamples.
+       PROGRAM-ID. Perform2.
 
        DATA DIVISION.
        WORKING-STORAGE SECTION.
