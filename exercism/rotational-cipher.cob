@@ -17,21 +17,22 @@
 
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
-           DISPLAY "ENTER ROT :"
-           ACCEPT WS-KEY
-
-           DISPLAY "ENTER SENTENCE TO CIPHER :"
-           ACCEPT WS-TEXT
+           MOVE 1 TO WS-KEY
+           MOVE "xyza" to WS-TEXT
 
            PERFORM ROTATIONAL-CIPHER
 
-           DISPLAY WS-CIPHER.
+           DISPLAY WS-CIPHER
+
+           STOP RUN.
 
 
        ROTATIONAL-CIPHER.
            INSPECT WS-TEXT
                CONVERTING 'abcdefghijklmnopqrstuvwxyz'
                           TO 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+           DISPLAY WS-TEXT
 
            MOVE ALL ' ' TO WS-CIPHER
 
@@ -41,12 +42,12 @@
                MOVE WS-TEXT(WS-INDEX:1) TO WS-CHAR
                COMPUTE WS-ASCII = FUNCTION ORD(WS-CHAR)
 
-               IF WS-ASCII >= 65 AND WS-ASCII <= 90
-                  COMPUTE WS-LVAL = (WS-ASCII - 65) + WS-KEY
+               IF WS-ASCII >= 66 AND WS-ASCII <= 91
+                  COMPUTE WS-LVAL = (WS-ASCII - 66) + WS-KEY
                   DIVIDE WS-LVAL BY 26
                      GIVING WS-DUM
                      REMAINDER WS-OFFSET
-                  COMPUTE WS-ASCII = 65 + WS-OFFSET
+                  COMPUTE WS-ASCII = 66 + WS-OFFSET
 
                   MOVE FUNCTION CHAR(WS-ASCII) TO WS-SHIFTED-CHAR
                ELSE
