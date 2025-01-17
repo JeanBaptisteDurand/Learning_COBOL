@@ -233,3 +233,5 @@
               MOVE 0 TO WS-RESULT
            END-IF
            EXIT.
+       END PROGRAM YACHT.
+
