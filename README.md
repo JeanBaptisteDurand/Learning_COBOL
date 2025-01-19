@@ -2,6 +2,10 @@
 
 cobc -x -o hello hello.cob
 
+IF FUNCTION MOD(WS-NUMBER, 2) NOT = 0
+IF FUNCTION REVERSE(FUNCTION TRIM(WS-HEYBOB))(1:1) = "?"
+
+
 000 :  /
 001 :  /
 002 :  /
