@@ -1,74 +1,52 @@
-       IDENTIFICATION DIVISION.
+    IDENTIFICATION DIVISION.
        PROGRAM-ID. luhn.
        ENVIRONMENT DIVISION.
        CONFIGURATION SECTION.
        REPOSITORY. FUNCTION ALL INTRINSIC.
        DATA DIVISION.
        WORKING-STORAGE SECTION.
-       01 WS-CARD-NUMBER              PIC X(32).
-       01 WS-CLEANED-NUMBER           PIC X(32).
-       01 WS-DIGIT                    PIC 9 VALUE 0.
-       01 WS-CARD-LENGTH              PIC 9(2) VALUE 0.
-       01 WS-CHECKSUM                 PIC 9(4) VALUE 0.
-       01 WS-INDEX                    PIC 9(2) VALUE 0.
-       01 WS-MULTIPLIED-DIGIT         PIC 9 VALUE 0.
-       01 WS-VALID                    PIC X(5) VALUE "FALSE".
-
+       01 WS-CARD-NUMBER PIC X(32).
+       01 WS-CARD-DIGITS PIC 9(32).
+       01 WS-CHECKSUM PIC 9(2).
+       01 WS-VALID PIC X(5).
+       01 WS-INDEX PIC 99.
+       01 WS-DIGIT PIC 99.
+       01 WS-SRC-INDEX PIC 99.
+       01 WS-CARD-NUMBER-2 PIC X(32).
+       
        PROCEDURE DIVISION.
        LUHN.
-           MOVE SPACES TO WS-CLEANED-NUMBER
-
-      * Remove spaces from the input
-           PERFORM VARYING WS-INDEX FROM 1 BY 1
-               UNTIL WS-INDEX > FUNCTION LENGTH(WS-CARD-NUMBER)
-               IF WS-CARD-NUMBER(WS-INDEX:1) NOT = SPACE
-                   MOVE WS-CARD-NUMBER(WS-INDEX:1) TO WS-CLEANED-NUMBER(
-                     FUNCTION LENGTH(FUNCTION TRIM(
-                     WS-CLEANED-NUMBER)) + 1:1)
-               END-IF
-           END-PERFORM
-
-      * Validate input: Ensure all characters are digits
-           PERFORM VARYING WS-INDEX FROM 1 BY 1
-               UNTIL WS-INDEX > FUNCTION LENGTH(
-               FUNCTION TRIM(WS-CLEANED-NUMBER))
-               IF WS-CLEANED-NUMBER(WS-INDEX:1) NOT NUMERIC
-                   MOVE "FALSE" TO WS-VALID
-                   EXIT PARAGRAPH
-               END-IF
-           END-PERFORM
-
-      * Determine length and validity of the string
-           COMPUTE WS-CARD-LENGTH = FUNCTION LENGTH(FUNCTION TRIM(WS-CLEANED-NUMBER))
-           IF WS-CARD-LENGTH <= 1
-               MOVE "FALSE" TO WS-VALID
-               EXIT PARAGRAPH
-           END-IF
-
-      * Apply Luhn algorithm
-           PERFORM VARYING WS-INDEX FROM WS-CARD-LENGTH BY -1
-               UNTIL WS-INDEX < 1
-               MOVE FUNCTION NUMVAL(WS-CLEANED-NUMBER(WS-INDEX:1)) TO WS-DIGIT
-
-               IF MOD(WS-CARD-LENGTH - WS-INDEX + 1, 2) = 0
-                   COMPUTE WS-MULTIPLIED-DIGIT = WS-DIGIT * 2
-                   IF WS-MULTIPLIED-DIGIT > 9
-                       COMPUTE WS-MULTIPLIED-DIGIT = WS-MULTIPLIED-DIGIT - 9
+          MOVE "FALSE" TO WS-VALID.
+      
+          MOVE WS-CARD-NUMBER TO WS-CARD-NUMBER-2.
+          INSPECT WS-CARD-NUMBER-2 CONVERTING "1234567890" TO "          ".
+      
+          IF NOT WS-CARD-NUMBER-2 = SPACES OR LENGTH OF FUNCTION TRIM(WS-CARD-NUMBER) = 1 THEN
+             EXIT PARAGRAPH
+          END-IF.
+      
+          MOVE 0 TO WS-CHECKSUM
+          MOVE 1 TO WS-INDEX
+          MOVE 0 TO WS-SRC-INDEX
+          PERFORM VARYING WS-SRC-INDEX
+            FROM LENGTH OF FUNCTION TRIM(WS-CARD-NUMBER)
+            BY -1
+          UNTIL WS-SRC-INDEX = 0
+             IF WS-CARD-NUMBER(WS-SRC-INDEX:1) >= 0 AND WS-CARD-NUMBER(WS-SRC-INDEX:1) <= 9 THEN
+                IF FUNCTION MOD(WS-INDEX, 2) = 0 THEN
+                   COMPUTE WS-DIGIT = FUNCTION NUMVAL(WS-CARD-NUMBER(WS-SRC-INDEX:1)) * 2
+                   IF WS-DIGIT > 9 THEN
+                         SUBTRACT 9 FROM WS-DIGIT
+                      END-IF
+                      COMPUTE WS-CHECKSUM = WS-CHECKSUM + WS-DIGIT
+                   ELSE
+                      ADD FUNCTION NUMVAL(WS-CARD-NUMBER(WS-SRC-INDEX:1)) TO WS-CHECKSUM
                    END-IF
-                   ADD WS-MULTIPLIED-DIGIT TO WS-CHECKSUM
-               ELSE
-                   ADD WS-DIGIT TO WS-CHECKSUM
-               END-IF
-           END-PERFORM
-
-      * Check if the checksum is divisible by 10
-           IF MOD(WS-CHECKSUM, 10) = 0
-               MOVE "VALID" TO WS-VALID
-           ELSE
-               MOVE "FALSE" TO WS-VALID
-           END-IF
-
-           DISPLAY "Input Number: " WS-CARD-NUMBER
-           DISPLAY "Validation Result: " WS-VALID
-
-           STOP RUN.
+                   
+                   ADD 1 TO WS-INDEX
+                END-IF
+             END-PERFORM
+      
+             IF FUNCTION MOD(WS-CHECKSUM, 10) = 0 THEN
+                MOVE "VALID" TO WS-VALID
+             END-IF.
