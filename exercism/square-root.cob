@@ -8,3 +8,5 @@
        PROCEDURE DIVISION.
        SQUARE-ROOT.
          COMPUTE WS-SQRT = WS-NUMBER ** 0.5
+         .
+      * MOVE FUNCTION SQRT( WS-NUMBER ) TO WS-SQRT
