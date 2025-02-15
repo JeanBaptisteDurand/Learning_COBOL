@@ -2,7 +2,7 @@
        * Exemple de manipulation de fichiers séquentiels en COBOL      *
        *                                                               *
        * F-CLIENT : fichier en lecture (assigné à INP001)              *
-       * F-SORTIE : fichier en écriture (assigné à OUT001)              *
+       * F-SORTIE : fichier en écriture (assigné à OUT001)             *
        *****************************************************************
 
        IDENTIFICATION DIVISION.
