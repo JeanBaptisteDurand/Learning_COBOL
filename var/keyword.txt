@@ -1,0 +1,113 @@
+=======================
+🔧 INSTRUCTIONS PRINCIPALES
+=======================
+ACCEPT       ADD         CALL        CANCEL      CLOSE
+COMPUTE      CONTINUE    DELETE      DISPLAY     DIVIDE
+EVALUATE     EXIT        GOBACK      GO          IF
+INITIALIZE   INSPECT     MERGE       MOVE        MULTIPLY
+OPEN         PERFORM     READ        RELEASE     RETURN
+REWRITE      SEARCH      SET         SORT        START
+STOP         STRING      SUBTRACT    UNSTRING    WRITE
+
+=======================
+📐 STRUCTURE DU PROGRAMME
+=======================
+DIVISION             SECTION             PARAGRAPH
+IDENTIFICATION       ENVIRONMENT         DATA
+PROCEDURE            PROGRAM-ID          AUTHOR
+INSTALLATION         DATE-WRITTEN        DATE-COMPILED
+REMARKS              CONFIGURATION       SPECIAL-NAMES
+INPUT-OUTPUT         FILE-CONTROL        DATA-CONTROL
+FILE SECTION         WORKING-STORAGE     LINKAGE SECTION
+LOCAL-STORAGE        SCREEN SECTION      REPORT SECTION
+FD                   SD                  01 à 49 (niveaux)
+
+=======================
+🧩 DESCRIPTION DE DONNÉES
+=======================
+PIC / PICTURE        VALUE              REDEFINES
+RENAMES              OCCURS             DEPENDING ON
+USAGE                INDEXED BY         COMP / COMP-1/2/3/4
+BINARY               PACKED-DECIMAL     DISPLAY
+SIGN IS              SYNCHRONIZED       JUSTIFIED
+BLANK WHEN ZERO      GLOBAL             EXTERNAL
+COMMON
+
+=======================
+⚙️ CONDITIONS ET CONTRÔLE DE FLUX
+=======================
+IF                  ELSE             END-IF
+EVALUATE            WHEN             OTHER
+END-EVALUATE        NEXT SENTENCE
+TRUE                FALSE
+
+=======================
+🔁 BOUCLES ET TESTS
+=======================
+PERFORM             UNTIL            VARYING
+FROM                BY               AFTER
+TIMES               WITH TEST        END-PERFORM
+
+=======================
+🧠 ARITHMÉTIQUE ET LOGIQUE
+=======================
+ADD                 SUBTRACT         MULTIPLY
+DIVIDE              COMPUTE          ROUNDED
+ON SIZE ERROR       NOT ON SIZE ERROR
+NUMERIC             POSITIVE         NEGATIVE
+EQUAL               GREATER          LESS
+THAN                ZERO             SPACES
+HIGH-VALUE(S)       LOW-VALUE(S)     QUOTES
+ALL                 NOT              AND
+OR
+
+=======================
+🧵 MANIPULATION DE CHAÎNES
+=======================
+STRING              UNSTRING         INSPECT
+TALLYING            REPLACING        DELIMITED BY
+SIZE                POINTER          BY
+INITIAL             LEADING          TRAILING
+BEFORE              AFTER            ALL
+
+=======================
+📂 ENTRÉE/SORTIE FICHIERS
+=======================
+OPEN                CLOSE            READ
+WRITE               REWRITE          DELETE
+START               END-READ         END-WRITE
+FILE                RECORD           INTO
+IN                  OUT              INPUT
+OUTPUT              IS               SEQUENTIAL
+RANDOM              KEY              ACCESS MODE
+ORGANIZATION        FILE STATUS      LOCK MODE
+
+=======================
+📦 FONCTIONS INTRINSÈQUES (avec FUNCTION)
+=======================
+FUNCTION ABS                FUNCTION CHAR
+FUNCTION CURRENT-DATE       FUNCTION DATE-OF-INTEGER
+FUNCTION INTEGER            FUNCTION INTEGER-OF-DATE
+FUNCTION LENGTH             FUNCTION LOWER-CASE
+FUNCTION MAX                FUNCTION MIN
+FUNCTION MOD                FUNCTION NUMVAL
+FUNCTION NUMVAL-C           FUNCTION ORD
+FUNCTION ORD-MAX            FUNCTION ORD-MIN
+FUNCTION RANDOM             FUNCTION REVERSE
+FUNCTION SQRT               FUNCTION TRIM
+FUNCTION UPPER-CASE         FUNCTION WHEN-COMPILED
+FUNCTION TEST-DATE-YYYYMMDD
+
+=======================
+🖥️ MOTS SPÉCIFIQUES MAINFRAME (IBM z/OS)
+=======================
+EXEC CICS              EXEC SQL
+END-EXEC               DCLGEN
+SYSIN                  SYSOUT
+DDNAME
+
+=======================
+❌ AUTRES MOTS RÉSERVÉS
+=======================
+END                 DECLARATIVES     END-DECLARATIVES
+USE                 PROGRAM          LOCK

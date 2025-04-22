@@ -1,5 +1,11 @@
 # Learning_COBOL
 
+jcl
+ps pds vsam
+comp
+utilitaire ibm
+copy
+
 cobc -x -o hello hello.cob
 
 IF FUNCTION MOD(WS-NUMBER, 2) NOT = 0
