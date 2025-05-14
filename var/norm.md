@@ -16,7 +16,7 @@ Enfin doivent être codées les autres structures en niveau 01 qui peuvent être
 -	Les variables servant à remplir des lignes d’édition ou des dates, utilisant en général des clauses VALUE et qui de ce fait ne doivent pas être initialisées.   
 --------------
 
-END for IF PERFROM EVALUATE et les avoir alignes , pas de END WRITE de preference
+END for IF PERFROM EVALUATE et les avoir alignes , pas de END WRITE de preference (pas une boucle)
 
 IF max 3 imbrication pour le reste 5 (par paragraphe)
 simple IF EVALUATE condition

@@ -115,3 +115,37 @@
 
 
 
+SORT {nom-du-fichier}
+    ON {KEY {champ1} [ASCENDING | DESCENDING]
+         [KEY {champ2} [ASCENDING | DESCENDING]
+         ... ]
+    USING {fichier-entrée}
+    GIVING {fichier-sorti}
+    [WITH NO INTERMEDIATE OUTPUT]
+    [WITH POINTER {pointeur}]
+
+    SORT : Trie les enregistrements d'un fichier.
+ON KEY : Spécifie les champs selon lesquels trier.
+ASCENDING : Tri par ordre croissant.
+DESCENDING : Tri par ordre décroissant.
+USING : Indique le fichier d'entrée à trier.
+GIVING : Indique le fichier de sortie où placer les résultats triés.
+WITH NO INTERMEDIATE OUTPUT : Indique qu'aucune sortie intermédiaire ne sera produite pendant le tri.
+WITH POINTER : Gère une position spécifique pour les opérations de tri.
+
+
+
+
+
+SEARCH {tableau}
+    [AT END {instructions}]
+    [WHEN {condition}]
+        {instructions}
+    [WHEN {condition}]
+        {instructions}
+    ...
+END-SEARCH
+SEARCH : Recherche une valeur dans un tableau.
+AT END : Spécifie les instructions à exécuter si la recherche atteint la fin du tableau sans trouver de correspondance.
+WHEN : Définit une condition à vérifier pour chaque élément du tableau.
+instructions : Actions à exécuter si la condition est vraie.
