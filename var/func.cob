@@ -149,3 +149,22 @@ SEARCH : Recherche une valeur dans un tableau.
 AT END : Spécifie les instructions à exécuter si la recherche atteint la fin du tableau sans trouver de correspondance.
 WHEN : Définit une condition à vérifier pour chaque élément du tableau.
 instructions : Actions à exécuter si la condition est vraie.
+
+*SEARCH a besoin de INDEXED BY
+
+exemple
+
+```
+01  TABLEAU-ZONE.                               
+     05  TABLEAU PIC X(7) OCCURS C-MAX-10000         
+         INDEXED BY W-I.
+     …
+*                                               
+     SET W-I TO 1.                              
+     SEARCH TABLEAU                             
+        AT END                                  
+           DISPLAY 'NON TROUVE'                 
+        WHEN TABLEAU(W-I) = '0987654'           
+           DISPLAY 'TROUVE'                     
+     END-SEARCH.
+```
