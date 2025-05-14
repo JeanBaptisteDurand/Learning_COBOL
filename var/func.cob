@@ -13,6 +13,10 @@
       * INITIAL : Applique BEFORE ou AFTER uniquement à la première occurrence du séparateur.
       * REPLACING : Remplace un caractère par un autre.
       * BY : Spécifie le caractère de remplacement.
+
+      INSPECT WS-SENTENCE
+               CONVERTING 'abcdefghijklmnopqrstuvwxyz'
+                          TO 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
       
       
       STRING {expr1} [DELIMITED BY {SPACE | SIZE | "valeur"}]
