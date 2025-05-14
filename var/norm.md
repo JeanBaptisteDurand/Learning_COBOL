@@ -38,8 +38,9 @@ THRU interdit
 GO TO interdit
 NEXT SENTENCE interdit (car GO TO deguiser)
 ALTER interdit (remplacement de code non maitriser par le dev)
-REPLACE limiter (Cette instruction permettant de remplacer des variables symboliques par une valeur donnée ne doit être utilisée que pour traiter le nombre de postes d’un tableau )
+REPLACE limiter (Cette instruction permettant de remplacer des variables symboliques par une valeur donnée ne doit être utilisée que pour traiter le nombre de postes d’un tableau ), il ne faut en utiliser que UNE car une deuxieme supprime la premiere, cela comprend aussi les COPY, un seul REPLACE dans TOUT le programme
 COPY REPLACING limiter (Cette instruction permettant de remplacer des variables symboliques par une valeur donnée dans une COPY ne doit être utilisée en DATA DIVISION que pour préfixer les données d’une structure, et surtout pas pour traiter le nombre de postes d’un tableau)
+EXTERNAL interdit (permet de share une var entre programmes sans quelle soit def dans les 2)
 
 
 etiquette intermediaire interdit (etiquette au milieu dun paragraphe)
@@ -58,4 +59,31 @@ PERFORM UNTIL fait 20 lignes max
 Complexite cyclomatique McCabe calcul le nombre de chemin fonctionnel des composant (complexite de maintenance) (via loutil Mia) et cette valeur ne doit pas depasser 200 ou 220 pour de vieux programme
 Limiter les call vers les autres programmes dans un composant pour simplifier maintenant
 Mutualiser les composants, un programme doit avoir entre 10% et 15% de code fortement mutualiser
+WITH DEBUGGING MODE coder dans ENVIRONMENT DIVISION doit etre commenter avant mise en prod
+
+
+
+** Performance et fiabiliter **
+PROGRAM-ID doit etre indentique au nom du programme (dans IDENTIFICATION DIVISION)
+DISPLAY dans les TP interdit sauf avec un D ligne 7, en batch DISPLAY est autoriser pour le traitement des erreurs grace et aux comptes rendu de fin de traitement
+SORT est interdit car consomme trop, le tri se fait via jcl dans un step reserver
+SEARCH permet de chercher rapidement dans un tableau via un incide, il faut que le tableau soit def par INDEXED BY
+
+Les indices pour les tableaux ou boucle doivent etre : PIC S9(4) BINARY
+Les var intermediaire pour les calculs doivent etre en PACKED-DECIMAL
+Valeur max dun indice, pour CHAQUE tableau, creer une var qui commence par C-MAX-(array name) et sera utiliser pour bloquer literation au dela du tableau
+
+Pour les dates : Les opérations sur les dates devront systématiquement passer par les modules de calcul standardisés propre à l’application (exemple : RGNDATE).
+
+les appel CALL doivent toujours etre en dynamique et non inclus dans lexecutable au moment du LINKEDIT
+CALL doit etre utiliser avec une var obligatoirement, declarer en WORKING STORAGE SECTION en PIC X(8) VALUE 'program name'
+exemple : 01  P-RAVCHOSE   PIC X(8) VALUE 'RAVCHOSE'.
+            CALL P-RAVCHOSE USING ... 
+Le nom du programme doit etre en clair grace a value, jamais le resultat dun calcul ou de la lecture dune table de parametrage
+(voir 4.11) Après chaque appel à un module externe, le code retour du module doit non seulement être testé, mais remonté au module de niveau supérieur en cas d’anomalie grave. Faire les test via EVALUATE
+
+ Definir un file statut pour chaque fichier sequentiel 'dsname-STATUS' ou dsname est le nom du fichier sous JCL et doit etre def en WSS en PIC X(2), apres chaque read write open close, il doit etre tester
+si FILE STATUS different de 0 et 10, msg danomalie avec arret immediat du traitement
+
+Obligation dutiliser INITIALIZE plutot que de loop sur un tableau pour linitialiser, beaucoup plus performant (na pas toujours etait le cas)
 
