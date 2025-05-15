@@ -48,8 +48,8 @@ Le paragraphe suivant l’étiquette de fin ne devra comporter qu’une seule in
 Un paragraphe doit toujours être codé dans le programme après son appel par un PERFORM.
 Les paragraphe sont ecrit dans lordre dexecution, si plusieurs para appelle un autre, celui appeler sera ecrit apres tout les appelant
 Les etiquettes doivent commencer par un nb a 4 chiffre puis une courte description a linfinitif, 9999 ou 999 est pour la fin, 9xxx est pour la gestion des erreurs fonctionnel et technique
-?? a verif - Il faut un '.' a la fin de letiquette
-UN SEUL POINT PAR PARAGRAPHE + un point apres chaque END-xxxx
+Il faut un '.' a la fin de letiquette
+UN SEUL POINT PAR PARAGRAPHE (cela force les les END-xxxx)
 Pour des programmes de la couche de Pilotage du Processus (PPI), etiquette sont ?A100, ? etant C pour para de controle des donnees en entree du service, T pour para de traitement
 un programme fait 3000 lignes max, 3300 pour vieux programme
 paragrpahe fait 250 lignes max
@@ -57,7 +57,7 @@ PERFORM UNTIL fait 20 lignes max
 
 / Special /
 Complexite cyclomatique McCabe calcul le nombre de chemin fonctionnel des composant (complexite de maintenance) (via loutil Mia) et cette valeur ne doit pas depasser 200 ou 220 pour de vieux programme
-Limiter les call vers les autres programmes dans un composant pour simplifier maintenant
+Limiter les call vers les autres programmes dans un composant pour simplifier maintenance (max 15 mais variable)
 Mutualiser les composants, un programme doit avoir entre 10% et 15% de code fortement mutualiser
 WITH DEBUGGING MODE coder dans ENVIRONMENT DIVISION doit etre commenter avant mise en prod
 
@@ -86,4 +86,107 @@ Le nom du programme doit etre en clair grace a value, jamais le resultat dun cal
 si FILE STATUS different de 0 et 10, msg danomalie avec arret immediat du traitement
 
 Obligation dutiliser INITIALIZE plutot que de loop sur un tableau pour linitialiser, beaucoup plus performant (na pas toujours etait le cas)
+
+
+** Norme DB2 **
+
+Hosts Variables en WORKING STORAGE SECTION, interdit en LINKAGE SECTION
+Check SQLCODE apres chaque ordres SQL tel quil soit (meme commit et rollback)
+Interdiction de coder un INSERT à l’intérieur d’une boucle FETCH 
+Le SELECT * est interdit : les colonnes utiles à la sélection doivent être citées dans l’ordre SQL.  
+Le SELECT FOR UPDATE est proscrit car il verrouille les données, ce qui est incompatible avec un fonctionnement en 24/7.
+Les doublons sont automatiquement supprimés avec l’ordre UNION ALL, cette option peut être couteuse en CPU. 
+
+
+** Facilité de maintenance et assistance au débogage  **
+
+
+Ajout de FILLER de repères en DATA DIVISION pour faciliter de retrouver la DATA DIVISION dans le dump, a faire surtout pour les batch
+```
+DATA DIVISION. 
+WORKING-STORAGE SECTION.  
+
+01  FILLER   PIC X(15) VALUE '*** DEB WSS ***'.   
+
+... 
+
+01  FILLER   PIC X(8) VALUE 'POL-NO ='. 
+
+01  W-POL-NO PIC S9(15) PACKED-DECIMAL. 
+
+... 
+
+01  FILLER   PIC X(15) VALUE '*** FIN WSS ***'.   
+
+LINKAGE SECTION.   
+
+...  
+```
+
+Pour les batch, faire regulierement un affichage du niveau davancement du traitement comme DISPLAY le numéro du dernier contrat traité (debug en cas de crash plus simple)
+En Batch su fin anormale, DISPLAY Nom du programme / Nom du paragraphe dans le programme / Informations techniques (code SQL, table, STATUS des fichiers séquentiels) / Numéro du dernier contrat traité  / Compteurs des enregistrements traités 
+
+Preparation du DEBUGGING MODE :
+- Chaque début de paragraphe doit être tracé par un DISPLAY avec D (column 7) avec obligatoirement le nom du programme et le nom du paragraphe en cours d’exécution
+
+```
+*---------------------------------------------------------------  
+
+* Pour le mode debugging : affichage du nom du programme          
+
+* et du paragraphe (DEBUG-NAME)                                 
+
+*---------------------------------------------------------------  
+
+D DECLARATIVES.                                                   
+
+D TRACE-COB SECTION.                                             
+
+D     USE FOR DEBUGGING ON ALL PROCEDURES.                        
+
+D TRACE-COB-NAME.                                                
+
+AutoShape 24, FormeD     DISPLAY C-xxxxxxxx ' : ' DEBUG-NAME                         
+
+Zone de texte 2, Zone de texteD END DECLARATIVES. 
+```
+Ce code évite d’avoir à répéter à chaque début de paragraphe le DISPLAY suivant équivalent (exemple) : 
+```
+ TB105-RECUPERER-INFOS-CONTRAT.               
+
+D    DISPLAY 'RAVPIC00 - TB105-RECUPERER-INFOS-CONTRAT'
+```
+
+Précision : en TP, ces DISPLAY apparaissent dans la SYSOUT CEEMSG du CICS. En batch, pour que les DISPLAY générés par la TRACE-COB SECTION apparaissent, il faut rajouter en PARMS « /DEBUG » : 
+```
+//SYSTSIN DD *                                          
+
+   DSN SYSTEM(DBD3)                                     
+
+   RUN PROGRAM(BAVCSF09) PLAN(PBDE0) -                  
+
+       PARMS('/DEBUG')    
+```
+
+
+
+
+
+
+** Cobol Metaware (bonus) **
+Les variables travail doivent être définies dans le niveau 01 adéquat (si non respect, le contenu de la variable de travail est susceptible d’être perdu)
+Ne pas utiliser les variables techniques du Framework comme PRIOR--PGM-NAME
+Les appels de programmes Cobol non-Metaware doivent respecter une syntaxe très particulière sinon tout casse:
+A savoir (modèle d’appel pour le RAVW276) :  
+```
+CALL SP--N2CCALL USING SP--RVSNATTP P-RAVW276  
+
+                K--SERVICE OF R--AVW276L  
+
+                NB-GAR OF R--AVW276Z           
+
+                AVI002-NB-POSTES OF R--LAVI002                          
+
+                K--CODE OF R--LAVI001 OMITTED 
+```
 
