@@ -19,3 +19,10 @@ FULL OUTER JOIN
 UNION
 UNION ALL
 CROSS JOIN
+
+INSERT INTO Employees (id, name)
+VALUES (1, 'Alice'),
+       (2, 'Bob'),
+       (3, 'Meir'),
+       (4, 'Winston'),
+       (5, 'Jonathan');
