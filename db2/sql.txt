@@ -11,3 +11,11 @@ NOT NULL
 SELECT eu.unique_id, e.name
 FROM Employees e
 LEFT JOIN EmployeeUNI eu ON e.id = eu.id
+
+INNER JOIN
+LEFT JOIN
+RIGHT JOIN
+FULL OUTER JOIN
+UNION
+UNION ALL
+CROSS JOIN
