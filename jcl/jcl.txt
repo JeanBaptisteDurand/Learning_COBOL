@@ -1,0 +1,40 @@
+// NAME or OPERATION
+/* delimiter - end of data
+//* comment
+// followed by all blanks - null or end of job
+
+jobname JOB accounting-info  , programmer name,
+	CLASS = class
+	...
+
+MSGLEVEL(stmt, msg)
+stmt -  1 affiche JCL utile
+	2 affiche JCL executer meme commenter
+
+msg -   0 only error msg
+	1 all exec msg
+	2 more external msg
+
+
+EXEC PGM
+EXEC PROC
+
+DD - DISP / SPACE / DCB
+space : TRK (56ko)  /  CYL (15 trk)  /  unit,(primary, secondary, max)
+DCB : DSORG (PS PO VS) / RECFM ( F FB FBS V VB VBS U) / LRECL (taille enregistrement) / BLKSIZE (taille total)
+
+DISP : init, normal end, abnormal end
+
+init :
+NEW (nouveau data set)
+OLD (dataset en exclusivite)
+SHR (readonly sharable)
+MOD (ajoute des donnees a un data set existant)
+
+normal end :
+CATLG (save file)
+KEEP (garde le fichier sans le save)
+DELETE (supprime le file)
+PASS (transfere le fichier a une autre etape)
+
+Abnormal : CATLG / KEEP / DELETE / UNCATLG (supprime link mais pas le file)

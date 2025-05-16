@@ -1,0 +1,14 @@
+MSDSI2
+
+HI JCL   (highligh)
+CAN   (cancel)
+C for CHANGE * * (all) (in file edition)
+C for copy (in jcl creation)
+SUB (sub)
+
+2 pour edit
+3.2 to create a jcl
+3.3 to create by copy a jcl
+3.4 consulter les fichiers
+9.H puis '?' pour select le job puis 's' sysout pour voir les display (output du programme)
+9.I  voir les jobs en cours dexecution
