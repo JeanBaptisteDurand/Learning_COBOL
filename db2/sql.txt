@@ -1,0 +1,13 @@
+SELECT DISTINCT author_id AS id
+FROM Views
+WHERE author_id = viewer_id
+ORDER BY id ASC;
+
+LENGTH
+NOT NULL
+<>
+
+
+SELECT eu.unique_id, e.name
+FROM Employees e
+LEFT JOIN EmployeeUNI eu ON e.id = eu.id

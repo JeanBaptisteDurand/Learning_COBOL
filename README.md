@@ -1,5 +1,11 @@
 # Learning_COBOL
 
+jcl
+ps pds vsam
+comp
+utilitaire ibm
+copy
+
 cobc -x -o hello hello.cob
 
 
