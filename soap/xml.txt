@@ -10,6 +10,32 @@ XSLT (qui mélange XSLT + autre XML/HTML)	Oui pour XSLT, non pour le reste	     
 
 XSL (Extensible Stylesheet Language) est le parent de XSLT XPATH XSL-FO ect...
 
++---------------------+
+|     XML or HTTP     |
++---------------------+
+        ▲
+        |
++---------------------+
+|       XLink         |  ←  ajoute des liens entre XML
++---------------------+
+        ▲
+        |
++---------------------+
+|      XPointer       |  ←  pointe vers une partie d'un XML (utilise XPath)
++---------------------+
+        ▲
+        |
++---------------------+       +---------------------+
+|       XPath         |  <--- |       XQuery         | ← requêtes avancées (comme SQL)
++---------------------+       +---------------------+
+        ▲
+        |
++---------------------+
+|        XSLT         |  ←  transforme un XML vers un autre format (utilise XPath)
++---------------------+
+
+///////////////////////////////////////
+
 XSLT
 Xtensible Stylesheet Language Transformations  (comme un template mais front ou comme du html)
 
@@ -46,7 +72,7 @@ Opérateur	    Signification
 @	            Sélection d'un attribut
 []	            Filtre ou position
 *	            Sélectionne tous les éléments
-`	            `
+`	            `  same as "
 =	            Égalité
 !=	            Différent
 <, >, <=, >=	Comparaison numérique ou textuelle
@@ -61,3 +87,26 @@ exemple en XSLT :
     <xsl:value-of select="title"/> by <xsl:value-of select="author"/>
   </p>
 </xsl:for-each>
+
+//////////
+
+XPointeur (peu supporter hors systèmes documentaires XML professionnels)
+
+C’est une extension d’URL pour cibler une partie précise d’un document XML.
+
+Il est souvent combiné avec XLink pour faire des liens vers une partie spécifique d’un autre XML ou du même document.
+
+
+books.xml#xpointer(id('book2'))
+
+<?xml version="1.0"?>
+<library>
+  <book id="book1">
+    <title>The Hobbit</title>
+  </book>
+  <book id="book2">
+    <title>Harry Potter</title>
+  </book>
+</library>
+
+/////////////////////////
