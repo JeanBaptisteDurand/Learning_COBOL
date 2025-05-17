@@ -1,0 +1,6 @@
+TCPIPSERVICE, URIMAP, TRANSACTION
+
+CICS listen port def sur TCPIPSERVICES
+call arrive -> transaction CWXN
+la transaction cherche une URIMAP correspondant au nom du webservice appele et au port
+lappli def dans URIMAP est lance

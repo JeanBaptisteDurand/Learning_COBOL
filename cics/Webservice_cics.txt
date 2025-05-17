@@ -1,0 +1,77 @@
+TCPIPSERVICE – Ouvrir un port réseau
+Permet à CICS d’écouter sur un port TCP/IP comme un serveur HTTP.
+
+Définit :
+Le port (ex: 8080 ou 443 pour HTTPS)
+Le protocole (HTTP/HTTPS)
+Le nom du handler (processus CICS qui traite les requêtes)
+
+```
+DEFINE TCPIPSERVICE(MONWS)
+       PORT(8080)
+       PROTOCOL(HTTP)
+       URM(CWBA)
+```
+
+Résumé : CICS écoute sur le port 8080 pour des requêtes HTTP, via le module CWBA (par exemple).
+
+
+
+URIMAP – Mapper une URL à une Transaction ou Pipeline
+Fait le lien entre :
+Une URL (par exemple /api/payment)
+Une Transaction (ex: PAYM)
+Ou Un Pipeline (pour SOAP)
+
+Types :
+Static URIMAP : pour REST-like services, mappé à une TRANSACTION
+Pipeline URIMAP : pour SOAP services, mappé à un PIPELINE
+
+DEFINE URIMAP(API-PAYMENT)
+       PATH('/api/payment')
+       TRANSACTION(PAYM)
+
+Résumé : Toute requête HTTP sur /api/payment lancera la transaction PAYM.
+
+
+
+
+PIPELINE – Moteur de traitement SOAP
+Spécifique aux WebServices SOAP
+Repose sur un Pipeline Configuration File (XML) qui :
+Décrit les handlers SOAP
+Définit le mapping SOAP vers transaction
+Gère les politiques de sécurité WS-Security
+Exemple de configuration XML :
+
+<PipelineConfiguration>
+  <HandlerSequence>
+    <Handler name="SOAPValidator"/>
+    <Handler name="MyBusinessLogicHandler" transaction="PAYM"/>
+  </HandlerSequence>
+</PipelineConfiguration>
+
+Définition en CICS :
+
+DEFINE PIPELINE(SOAP-PAYMENT)
+       CONFIGFILE('PAYMXML')
+
+Résumé : Le pipeline lit les messages SOAP et appelle la transaction associée.
+
+
+REST
+```
+[Système externe] -- HTTP Request --> [TCPIPSERVICE: 8080] 
+                                      ↳ [URIMAP: /api/payment] 
+                                          ↳ [TRANSACTION: PAYM] 
+                                              ↳ [PROGRAM: PAYMENTPGM]
+```
+
+SOAP
+```
+[Système externe] -- SOAP Request --> [TCPIPSERVICE: 8080] 
+                                      ↳ [URIMAP: /api/soap/payment] 
+                                          ↳ [PIPELINE: SOAP-PAYMENT] 
+                                              ↳ [TRANSACTION: PAYM] 
+                                                  ↳ [PROGRAM: PAYMENTPGM]
+```

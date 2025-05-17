@@ -1,6 +1,16 @@
-TCPIPSERVICE, URIMAP, TRANSACTION
+ Les Composants de Base de CICS
+TRANSACTION	        Code de 4 lettres qui déclenche un PROGRAM
+PROGRAM	            Programme COBOL appelé par une transaction
+MAPSET	            Écran 3270 défini en BMS (optionnel si pas d’IHM)
+COMMAREA	        Zone mémoire pour passer les données entre programmes
+CHANNEL/CONTAINER	Nouvelle méthode pour transporter des données volumineuses
+TDQ/TSQ	            Files d'attente temporaires pour stocker des données
+FILE	            Accès aux fichiers VSAM
 
-CICS listen port def sur TCPIPSERVICES
-call arrive -> transaction CWXN
-la transaction cherche une URIMAP correspondant au nom du webservice appele et au port
-lappli def dans URIMAP est lance
+
+CICS ne garde pas le programme en memoire entre 2 ecran
+Utilisateur tape MENU  -> CICS lance PROGRAM MENU01
+  - Affiche l'écran principal
+  - Terminé
+Utilisateur sélectionne Option 1
+  -> CICS relance MENU01 avec la COMMAREA contenant le choix

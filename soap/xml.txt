@@ -1,0 +1,8 @@
+xmlns et prefix
+
+Situation	                                Avec préfixe (xmlns:prefix)	                Sans préfixe (xmlns)
+
+Mélange de plusieurs vocabulaires	        Oui	                                        Non
+Travail dans un seul vocabulaire	        Pas nécessaire	                            Oui
+XSLT (qui mélange XSLT + autre XML/HTML)	Oui pour XSLT, non pour le reste	        Oui pour tout le reste si voulu
+
