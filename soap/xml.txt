@@ -6,10 +6,12 @@ Mélange de plusieurs vocabulaires	        Oui	                                 
 Travail dans un seul vocabulaire	        Pas nécessaire	                            Oui
 XSLT (qui mélange XSLT + autre XML/HTML)	Oui pour XSLT, non pour le reste	        Oui pour tout le reste si voulu
 
+/////////////////////////////////////////////////////
 
+XSL (Extensible Stylesheet Language) est le parent de XSLT XPATH XSL-FO ect...
 
 XSLT
-Xtensible Stylesheet Language Transformations
+Xtensible Stylesheet Language Transformations  (comme un template mais front ou comme du html)
 
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
@@ -34,5 +36,28 @@ Xtensible Stylesheet Language Transformations
 
 </xsl:stylesheet>
 
+////////////////////////////////////////////////
 
+XPATH   XML Path Language
 
+Opérateur	    Signification
+/	            Sélection directe (enfant immédiat)
+//	            Sélection n'importe où (descendant)
+@	            Sélection d'un attribut
+[]	            Filtre ou position
+*	            Sélectionne tous les éléments
+`	            `
+=	            Égalité
+!=	            Différent
+<, >, <=, >=	Comparaison numérique ou textuelle
+text()	        Sélectionne le texte d’un élément
+position()	    Donne la position d’un élément dans un ensemble
+last()	           Sélectionne le dernier élément
+
+exemple en XSLT :
+
+<xsl:for-each select="/library/book[@category='fantasy']">
+  <p>
+    <xsl:value-of select="title"/> by <xsl:value-of select="author"/>
+  </p>
+</xsl:for-each>
