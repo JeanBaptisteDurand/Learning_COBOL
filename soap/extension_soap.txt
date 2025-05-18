@@ -1,0 +1,6 @@
+Norme	                    Rôle
+WS-Security	                Authentification, signature, chiffrement, horodatage
+WS-Addressing	            Gestion des URI, identifiants de message, retours dynamiques
+WS-ReliableMessaging	    Assure que les messages arrivent une seule fois, dans le bon ordre
+WS-Policy	                Déclare les règles d’usage (sécurité requise, encodage, etc.)
+WS-AtomicTransaction	    Gestion des transactions globales distribuées
