@@ -34,6 +34,17 @@ XSL (Extensible Stylesheet Language) est le parent de XSLT XPATH XSL-FO ect...
 |        XSLT         |  ←  transforme un XML vers un autre format (utilise XPath)
 +---------------------+
 
+
+Ordre chronologique et dependence
+
+ XPath (1999) ─────┐
+                   ├─> XSLT (1999)
+                   ├─> XPointer (2001)
+                   └─> XQuery (2007)
+ XLink (2000) ───┬────────────────┘
+                └─> Peut utiliser XPointer pour cibler une partie précise
+
+
 ///////////////////////////////////////
 
 XSLT
@@ -110,3 +121,11 @@ books.xml#xpointer(id('book2'))
 </library>
 
 /////////////////////////
+
+XQuery 
+is to XML what SQL is to databases.
+
+for $x in doc("books.xml")/bookstore/book
+where $x/price>30
+order by $x/title
+return $x/title
