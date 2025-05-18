@@ -254,10 +254,9 @@ The Schema above is interpreted like this:
 <xs:element name="body" type="xs:string"> the element "body" is of type string
 
 
-//////////////////////////////////////////////////////
 
 XSD Data Type
-
+XML Schema Definition.
 
 +---------------------------+----------------------------------------------------+----------------------------+
 | Type XSD                   | Description                                        | Exemple                    |
