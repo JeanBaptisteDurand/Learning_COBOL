@@ -1,4 +1,8 @@
 xmlns et prefix
+https://www.w3schools.com/xml/
+
+WSDL2COBOL ? pour traiter le xml ?
+cics containeur
 
 Situation	                                Avec préfixe (xmlns:prefix)	                Sans préfixe (xmlns)
 
@@ -251,3 +255,51 @@ The Schema above is interpreted like this:
 
 
 //////////////////////////////////////////////////////
+
+XSD Data Type
+
+
++---------------------------+----------------------------------------------------+----------------------------+
+| Type XSD                   | Description                                        | Exemple                    |
++---------------------------+----------------------------------------------------+----------------------------+
+| xs:string                  | Chaîne de texte                                    | "Hello World"              |
+| xs:normalizedString        | Chaîne sans caractères de contrôle (tab, retour chariot) | "Hello World"        |
+| xs:token                   | Chaîne sans espaces en début, fin, ou multiples espaces | "Hello World"        |
+| xs:boolean                 | Booléen vrai ou faux                               | true, false                |
+| xs:decimal                 | Nombre décimal                                    | 12.34                      |
+| xs:integer                 | Nombre entier                                     | 42                         |
+| xs:float                   | Nombre flottant simple précision                   | 3.14                       |
+| xs:double                  | Nombre flottant double précision                   | 2.71828                    |
+| xs:date                    | Date (AAAA-MM-JJ)                                  | 2025-05-18                 |
+| xs:time                    | Heure (HH:MM:SS)                                   | 13:45:30                   |
+| xs:dateTime                | Date et heure combinées                            | 2025-05-18T13:45:30        |
+| xs:duration                | Durée (ISO 8601)                                   | P1Y2M3DT4H5M6S             |
++---------------------------+----------------------------------------------------+----------------------------+
+| xs:nonNegativeInteger      | Entier >= 0                                        | 5                          |
+| xs:positiveInteger         | Entier > 0                                         | 1                          |
+| xs:nonPositiveInteger      | Entier <= 0                                        | -5                         |
+| xs:negativeInteger         | Entier < 0                                         | -1                         |
+| xs:byte                    | Entier entre -128 et 127                           | -100                       |
+| xs:short                   | Petit entier                                      | 32000                      |
+| xs:long                    | Grand entier                                      | 1234567890123              |
++---------------------------+----------------------------------------------------+----------------------------+
+| xs:ID                      | Identifiant unique dans le document                | id123                      |
+| xs:IDREF                   | Référence vers un ID existant                      | id123                      |
+| xs:IDREFS                  | Liste de références ID séparées par des espaces    | id123 id456                |
+| xs:NCName                  | Nom sans deux-points (:)                           | validName                  |
++---------------------------+----------------------------------------------------+----------------------------+
+| xs:anyURI                  | URI ou URL                                        | https://example.com        |
+| xs:base64Binary            | Données binaires en Base64                         | SGVsbG8=                   |
+| xs:hexBinary               | Données binaires en hexadécimal                    | 4FA3                       |
++---------------------------+----------------------------------------------------+----------------------------+
+| xs:QName                   | Nom qualifié avec namespace                       | ns:ElementName             |
+| xs:NOTATION                | Indique une notation                              | image/jpeg                 |
++---------------------------+----------------------------------------------------+----------------------------+
+
+Notes :
+- xs:normalizedString supprime les caractères de contrôle (tabulations, sauts de ligne).
+- xs:token supprime les espaces en début, fin et réduit les espaces multiples à un seul.
+- P1Y2M3DT4H5M6S correspond à 1 an, 2 mois, 3 jours, 4 heures, 5 minutes et 6 secondes (format ISO 8601).
+- xs:ID, xs:IDREF, xs:IDREFS permettent de gérer des références croisées dans un document XML.
+- xs:anyURI peut contenir une URL, un chemin local ou une référence.
+- xs:QName est utilisé pour les noms qualifiés avec namespace (préfixe:Nom).
