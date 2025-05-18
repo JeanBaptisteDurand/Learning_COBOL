@@ -146,3 +146,65 @@ The xlink:type="simple" creates a simple "HTML-like" link
 The xlink:href attribute specifies the URL to link to (in this case - an image)
 The xlink:show="new" specifies that the link should open in a new window
 
+///////////////////////////////
+
+XML DTD
+Document Type Definition
+
+An XML document with correct syntax is called "Well Formed".
+An XML document validated against a DTD is both "Well Formed" and "Valid".
+
+<?xml version="1.0"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library>
+  <book id="b001" category="fiction">
+    <title>1984</title>
+    <author>George Orwell</author>
+    <price>19.99</price>
+  </book>
+  <book id="b002" category="sci-fi">
+    <title>Dune</title>
+    <author>Frank Herbert</author>
+    <price>29.99</price>
+  </book>
+  <notice message="All rights reserved."/>
+</library>
+
+
+
+<!-- Déclaration du document root -->
+<!ELEMENT library (book+)>
+
+<!-- Déclaration de book avec ses sous-éléments -->
+<!ELEMENT book (title, author, price)>
+<!ATTLIST book
+  id ID #REQUIRED
+  category CDATA #IMPLIED
+>
+
+<!-- Déclaration des sous-éléments -->
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+
+<!-- Déclaration d'une entité réutilisable -->
+<!ENTITY copyright "All rights reserved.">
+
+<!-- Déclaration d'un élément optionnel de type EMPTY (pas de contenu) -->
+<!ELEMENT notice EMPTY>
+<!ATTLIST notice message CDATA #REQUIRED>
+
+
+
+Mot-clé DTD	        Description
+
+<!ELEMENT>	        Déclare un élément et ses enfants
+<!ATTLIST>	        Déclare des attributs
+#PCDATA	            Données texte obligatoire
+ID	                Un identifiant unique dans le document
+CDATA	              Du texte brut (non typé)
+#REQUIRED	          L'attribut est obligatoire
+#IMPLIED	          L'attribut est optionnel
+EMPTY	              Éléments sans contenu
++	                  Un ou plusieurs éléments
+<!ENTITY>	          Déclare une entité réutilisable
