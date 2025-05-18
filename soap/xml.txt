@@ -129,3 +129,20 @@ for $x in doc("books.xml")/bookstore/book
 where $x/price>30
 order by $x/title
 return $x/title
+
+//////////////////////////////
+
+XLink
+
+ON doit define son namespace avant de lutiliser
+
+<homepages xmlns:xlink="http://www.w3.org/1999/xlink">
+  <homepage xlink:type="simple" xlink:href="https://www.w3schools.com">Visit W3Schools</homepage>
+  <homepage xlink:type="simple" xlink:href="http://www.w3.org">Visit W3C</homepage>
+</homepages>
+
+The XLink namespace is declared at the top of the document (xmlns:xlink="http://www.w3.org/1999/xlink")
+The xlink:type="simple" creates a simple "HTML-like" link
+The xlink:href attribute specifies the URL to link to (in this case - an image)
+The xlink:show="new" specifies that the link should open in a new window
+
