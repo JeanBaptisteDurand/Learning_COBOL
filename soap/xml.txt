@@ -3,6 +3,7 @@ https://www.w3schools.com/xml/
 
 WSDL2COBOL ? pour traiter le xml ?
 cics containeur
+pour lenvoie ca utilise wsdl mais pour la reception urimap
 
 Situation	                                Avec préfixe (xmlns:prefix)	                Sans préfixe (xmlns)
 
