@@ -208,3 +208,46 @@ CDATA	              Du texte brut (non typé)
 EMPTY	              Éléments sans contenu
 +	                  Un ou plusieurs éléments
 <!ENTITY>	          Déclare une entité réutilisable
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+XML Schema
+
+An XML Schema describes the structure of an XML document, just like a DTD.
+An XML document with correct syntax is called "Well Formed".
+An XML document validated against an XML Schema is both "Well Formed" and "Valid".
+
+XML Schemas are More Powerful than DTD
+XML Schemas are written in XML
+XML Schemas are extensible to additions
+XML Schemas support data types
+XML Schemas support namespaces
+
+
+<xs:element name="note">
+
+<xs:complexType>
+  <xs:sequence>
+    <xs:element name="to" type="xs:string"/>
+    <xs:element name="from" type="xs:string"/>
+    <xs:element name="heading" type="xs:string"/>
+    <xs:element name="body" type="xs:string"/>
+  </xs:sequence>
+</xs:complexType>
+
+</xs:element>
+
+
+
+The Schema above is interpreted like this:
+
+<xs:element name="note"> defines the element called "note"
+<xs:complexType> the "note" element is a complex type
+<xs:sequence> the complex type is a sequence of elements
+<xs:element name="to" type="xs:string"> the element "to" is of type string (text)
+<xs:element name="from" type="xs:string"> the element "from" is of type string
+<xs:element name="heading" type="xs:string"> the element "heading" is of type string
+<xs:element name="body" type="xs:string"> the element "body" is of type string
+
+
+//////////////////////////////////////////////////////
