@@ -1,10 +1,5 @@
 MSDSI2
 
-HI JCL   (highligh)
-CAN   (cancel)
-C for CHANGE * * (all) (in file edition)
-C for copy (in jcl creation)
-SUB (sub)
 
 2 pour edit
 3.2 to create a jcl
@@ -12,3 +7,58 @@ SUB (sub)
 3.4 consulter les fichiers
 9.H puis '?' pour select le job puis 's' sysout pour voir les display (output du programme)
 9.I  voir les jobs en cours dexecution
+
+
+HI JCL   (highligh)
+CAN   (cancel)
+C for CHANGE * * (all) (in file edition)
+C for copy (in jcl creation)
+SUB (sub)
+e edit
+RES reset (enlever warning)
+F11 pour se deconnecter
+
+
+
+
+COMMAND IN FILE EDITION
+
+LOCATE 42 - va a la 43ieme ligne
+FIND 'ALUT TOI' - cherche texte dans le file
+FIND DIVISION FIRST/LAST - cherche premiere ou derniere occurance
+f5 pour aller dune occurrence a lautre
+m + f7 ou f8 - va au debut / fin du doc    ou alors TOP ou BOTTOM
+Scroll : CSR ou PAGE
+PRO pour profile
+
+CHANGE ALL first second
+
+
+menu sur la gauche :
+i(n) pour inserer une nouvelle ligne
+d pour delete
+C copy   - A ou B pour paste (Apres ou avant la ligne)
+R Dupliquer
+M move
+
+DD CC MM pour creer un bloc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
