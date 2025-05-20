@@ -17,8 +17,11 @@ SUB (sub)
 e edit
 RES reset (enlever warning)
 F11 pour se deconnecter
+cols collone
+saveH
 
-
+SRCFOR - recherche textuel (content) dans un PDS
+SJ - source jcl (permet de voir le jcl depuis une SDSF)
 
 
 COMMAND IN FILE EDITION
