@@ -49,6 +49,8 @@ DD CC MM pour creer un bloc
 
 f10 f11 gauche droite
 
+F find
+f5 pour passer au find dapres
 
 
 
