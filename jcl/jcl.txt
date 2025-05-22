@@ -38,3 +38,5 @@ DELETE (supprime le file)
 PASS (transfere le fichier a une autre etape)
 
 Abnormal : CATLG / KEEP / DELETE / UNCATLG (supprime link mais pas le file)
+
+PROC and PEND is to mark a group of jcl statement to be called from another jcl
