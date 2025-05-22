@@ -141,7 +141,7 @@ WITH POINTER : Gère une position spécifique pour les opérations de tri.
 
 
 
-SEARCH {tableau}
+SEARCH {tableau} (Varying indices)
     [AT END {instructions}]
     [WHEN {condition}]
         {instructions}
@@ -172,6 +172,8 @@ exemple
            DISPLAY 'TROUVE'                     
      END-SEARCH.
 ```
+
+SEARCH ALL (le tableau doit etre trier)
 
 
 SORT WS-PRENOM ON DESCENDING KEY WS-PRENOM
