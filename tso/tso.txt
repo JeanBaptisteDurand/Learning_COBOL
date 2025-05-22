@@ -57,6 +57,11 @@ f12 cancel
 
 M+f7 ou f8 pour aller tout en haut ou tout en bas
 
+COLS afficher/desactiver les collonnes
+HEX on/off
+PRO profile - affiche le profil actuel
+
+
 
 
 
