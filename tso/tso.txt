@@ -46,6 +46,13 @@ M move
 
 DD CC MM pour creer un bloc
 
+)) et ))n pour decaler vers la droite en block, n etait le decalage a droite
+(( pareil pour la gauche
+
+C + O: Copie une ligne et la superpose aux autres lignes du groupe là où il y a des espaces. (weird a test)
+
+
+
 
 f10 f11 gauche droite
 
@@ -61,7 +68,7 @@ COLS afficher/desactiver les collonnes
 HEX on/off
 PRO profile - affiche le profil actuel
 
-
+RENUM/UNNUM: Renumérotation ou suppression des numéros de séquence à partir de la colonne 73.
 
 
 
