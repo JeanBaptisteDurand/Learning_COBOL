@@ -2,3 +2,7 @@ READ file INTO ws-DATA
                 at end 
                 not at END
 //END-READ
+
+WRITE
+
+REWRITE (on doit lire avant de rewrite une ligne)
