@@ -51,6 +51,8 @@ f10 f11 gauche droite
 
 F find
 f5 pour passer au find dapres
+f6 reproduire la derniere Modification
+f12 cancel
 
 
 
