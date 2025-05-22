@@ -1,0 +1,4 @@
+READ file INTO ws-DATA
+                at end 
+                not at END
+//END-READ
