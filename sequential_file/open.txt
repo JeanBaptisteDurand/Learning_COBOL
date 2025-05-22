@@ -1,0 +1,4 @@
+OPEN INPUT FILE         only read
+     OUTPUT FILE        only WRITE
+     EXTEND FILE        only write but at the end of the file
+     I-O                peut etre lu ecrit modifie (READ WRITE REWRITE DELETE)
