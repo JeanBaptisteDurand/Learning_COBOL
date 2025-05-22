@@ -12,6 +12,8 @@
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
            SELECT F-CLIENT ASSIGN TO "INP001"
+               ORGANIZATION IS SEQUENTIAL
+               ACCESS MODE IS SEQUENTIAL
                FILE STATUS IS WS-FS-CLIENT.
            SELECT F-SORTIE ASSIGN TO "OUT001"
                FILE STATUS IS WS-FS-SORTIE.
@@ -21,6 +23,7 @@
            FD F-CLIENT
                RECORD CONTAINS 80 CHARACTERS
                BLOCK CONTAINS 10 RECORDS.
+    *          DATA RECORD IS nom-enregistrement
            01 FS-ENR-CLIENT PIC X(80).
 
            FD F-SORTIE
