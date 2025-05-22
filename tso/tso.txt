@@ -47,6 +47,10 @@ M move
 DD CC MM pour creer un bloc
 
 
+f10 f11 gauche droite
+
+
+
 
 
 
