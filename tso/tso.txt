@@ -49,11 +49,13 @@ DD CC MM pour creer un bloc
 
 f10 f11 gauche droite
 
+LOCATE
 F find
 f5 pour passer au find dapres
 f6 reproduire la derniere Modification
 f12 cancel
 
+M+f7 ou f8 pour aller tout en haut ou tout en bas
 
 
 
