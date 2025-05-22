@@ -39,4 +39,5 @@ PASS (transfere le fichier a une autre etape)
 
 Abnormal : CATLG / KEEP / DELETE / UNCATLG (supprime link mais pas le file)
 
-PROC and PEND is to mark a group of jcl statement to be called from another jcl
+PROC and PEND is to mark a group of jcl statement to be called from another jcl (with exec)
+et sera stocker dans SYS1.PROCLIB dit system proc lib au lieu du personnal space
