@@ -8,7 +8,9 @@ copy
 
 cobc -x -o hello hello.cob
 
-
+track = 55/56 ko
+15 TRK par CYL
+cylindre = 840ko
 
 
 IF FUNCTION MOD(WS-NUMBER, 2) NOT = 0
