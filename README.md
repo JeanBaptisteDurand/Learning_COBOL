@@ -1,10 +1,12 @@
 # Learning_COBOL
 
-jcl
-ps pds vsam
-comp
-utilitaire ibm
-copy
+voir si je peux iterate sur un pds sans declarer chaque membre individuellement
+vsam
+package db2
+cics transaction
+jcl + utilitaire
+
+endevor / platinium
 
 cobc -x -o hello hello.cob
 
