@@ -172,3 +172,6 @@ exemple
            DISPLAY 'TROUVE'                     
      END-SEARCH.
 ```
+
+
+SORT WS-PRENOM ON DESCENDING KEY WS-PRENOM
