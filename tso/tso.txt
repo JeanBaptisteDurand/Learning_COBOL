@@ -51,7 +51,8 @@ DD CC MM pour creer un bloc
 
 C + O: Copie une ligne et la superpose aux autres lignes du groupe là où il y a des espaces. (weird a test)
 
-
+LCC (block) met tout en minuscule
+UCC met tout en majuscule
 
 
 f10 f11 gauche droite
