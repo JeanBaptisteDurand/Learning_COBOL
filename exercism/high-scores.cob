@@ -174,3 +174,51 @@ TestCase "Scores after personal best"
  12 TEST CASES WERE EXECUTED
   5 PASSED
   7 FAILED
+
+
+         IDENTIFICATION DIVISION.
+       PROGRAM-ID. high-scores.
+
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-PROPERTY       PIC A(20).
+       01 WS-SCORES.
+           02 SCORES        PIC X(3) OCCURS 20 TIMES
+                            INDEXED BY IDX.
+
+       01 WS-SORTED-SCORES.
+           02 SORTED-SCORES PIC X(3) OCCURS 20 TIMES
+                            INDEXED BY IDX-S.
+      
+       01 WS-SCORE-LEN      PIC 9(4) COMP.
+
+       01 WS-RESULT-STRING  PIC X(60).
+       01 WS-RESULT-VALUE   PIC 999.
+
+       PROCEDURE DIVISION.
+       HIGH-SCORES SECTION.     
+           EVALUATE WS-PROPERTY
+               WHEN 'scores'
+                   MOVE FUNCTION TRIM(WS-SCORES TRAILING) 
+                        TO WS-RESULT-STRING
+
+               WHEN 'latest'
+                   COMPUTE IDX = LENGTH OF FUNCTION 
+                                 TRIM(WS-SCORES TRAILING) / 3
+                   MOVE SCORES(IDX) TO WS-RESULT-VALUE WS-RESULT-STRING
+      
+               WHEN 'personalBest'
+                   SET IDX TO 1
+                   SEARCH SCORES VARYING IDX
+                       WHEN SCORES(IDX) > WS-RESULT-VALUE
+                           MOVE SCORES(IDX) TO WS-RESULT-VALUE 
+                                               WS-RESULT-STRING
+                           CONTINUE
+                   END-SEARCH
+                        
+               WHEN 'personalTopThree'
+                   MOVE WS-SCORES TO WS-SORTED-SCORES
+                   SORT SORTED-SCORES DESCENDING SORTED-SCORES
+                   MOVE WS-SORTED-SCORES(1:9) TO WS-RESULT-STRING
+           END-EVALUATE
+           EXIT.
