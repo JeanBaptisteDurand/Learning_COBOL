@@ -51,7 +51,8 @@
                    ADD 1 to WS-RS
                    MOVE "000" to SCORES(WS-MI)
 
-           initialise WS-PROPERTY, WS-SCORES.
+           initialise WS-PROPERTY, WS-SCORES
+           .
 
 
        FIND-LAST.
@@ -65,16 +66,16 @@
 
 
        CALCULATE-MAXIMUM.
-           MOVE FUNCTION NUMVAL(SCORES(1)) TO WS-MAXIMUM
+           MOVE 1 TO WS-MAXIMUM
            MOVE SPACES to WS-MAXIMUM-H
            MOVE 1 TO WS-INDEX
-           PERFORM VARYING WS-INDEX FROM 2 BY 1 UNTIL WS-INDEX > 20
+           PERFORM VARYING WS-INDEX FROM 1 BY 1 UNTIL WS-INDEX > 20
                IF SCORES(WS-INDEX) > WS-MAXIMUM
                    MOVE SCORES(WS-INDEX) TO WS-MAXIMUM-H
-                   MOVE FUNCTION NUMVAL(SCORES(WS-INDEX)) TO WS-MAXIMUM
+                   MOVE SCORES(WS-INDEX) TO WS-MAXIMUM
                    MOVE WS-INDEX TO WS-MI
                END-IF
-           END-PERFORM.
+           END-PERFORM.         
 
 
 
