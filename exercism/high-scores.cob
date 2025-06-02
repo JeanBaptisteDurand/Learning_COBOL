@@ -8,8 +8,7 @@
            02 SCORES        PIC X(3) OCCURS 20 TIMES
                             INDEXED BY IDX.
 
-       01 WS-RESULT-STRING.
-            02 RESULT        PIC X(3) OCCURS 20 TIMES.
+       01 WS-RESULT-STRING   PIC X(60).
        01 WS-RESULT-VALUE   PIC 999.
        01 WS-MAXIMUM         PIC 9(3) VALUE 0.
        01 WS-MAXIMUM-H      PIC X(3).
@@ -21,7 +20,7 @@
 
        PROCEDURE DIVISION.
        HIGH-SCORES.
-           initialise WS-RESULT-STRING, WS-RESULT-VALUE, WS-MI,
+           initialise WS-RESULT-VALUE, WS-MI,
                        WS-INDEX, WS-RS
            evaluate true
                when WS-PROPERTY = "scores"
@@ -37,21 +36,19 @@
       
                when WS-PROPERTY = "personalTopThree"
                    PERFORM CALCULATE-MAXIMUM
-                   MOVE WS-MAXIMUM-H TO RESULT(WS-RS)
+                   MOVE WS-MAXIMUM-H TO WS-RESULT-STRING(1:3)
                    ADD 1 to WS-RS
                    MOVE "000" to SCORES(WS-MI)
       
                    PERFORM CALCULATE-MAXIMUM
-                   MOVE WS-MAXIMUM-H TO RESULT(WS-RS)
+                   MOVE WS-MAXIMUM-H TO WS-RESULT-STRING(4:6)
                    ADD 1 to WS-RS
                    MOVE "000" to SCORES(WS-MI)
       
                    PERFORM CALCULATE-MAXIMUM
-                   MOVE WS-MAXIMUM-H TO RESULT(WS-RS)
+                   MOVE WS-MAXIMUM-H TO WS-RESULT-STRING(7:9)
                    ADD 1 to WS-RS
                    MOVE "000" to SCORES(WS-MI)
-
-           initialise WS-PROPERTY, WS-SCORES
            .
 
 
@@ -75,7 +72,8 @@
                    MOVE SCORES(WS-INDEX) TO WS-MAXIMUM
                    MOVE WS-INDEX TO WS-MI
                END-IF
-           END-PERFORM.         
+           END-PERFORM.
+  
 
 
 
