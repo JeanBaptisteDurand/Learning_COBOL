@@ -67,112 +67,21 @@
            MOVE SPACES to WS-MAXIMUM-H
            MOVE 1 TO WS-INDEX
            PERFORM VARYING WS-INDEX FROM 1 BY 1 UNTIL WS-INDEX > 20
-               IF SCORES(WS-INDEX) > WS-MAXIMUM
+               IF FUNCTION NUMVAL(SCORES(WS-INDEX)) > WS-MAXIMUM
                    MOVE SCORES(WS-INDEX) TO WS-MAXIMUM-H
-                   MOVE SCORES(WS-INDEX) TO WS-MAXIMUM
+                   MOVE FUNCTION NUMVAL(SCORES(WS-INDEX)) TO WS-MAXIMUM
                    MOVE WS-INDEX TO WS-MI
                END-IF
            END-PERFORM.
-  
 
 
 
 
 
-TestCase "List of scores"
-    MOVE " 30 50 20 70" TO WS-SCORES
-    MOVE "scores" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = " 30 50 20 70"
-TestCase "Latest score"
-    MOVE "100  0 90 30" TO WS-SCORES
-    MOVE "latest" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-VALUE =  30
-TestCase "Personal best"
-    MOVE " 40100 70" TO WS-SCORES
-    MOVE "personalBest" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-VALUE = 100
-TestCase "Personal top three from a list of scores"
-    MOVE " 10 30 90 30100 20 10  0 30 40 40 70 70" TO WS-SCORES
-    MOVE "personalTopThree" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = "100 90 70"
-TestCase "Personal top highest to lowest"
-    MOVE " 20 10 30" TO WS-SCORES
-    MOVE "personalTopThree" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = " 30 20 10"
-TestCase "Personal top when there is a tie"
-    MOVE " 40 20 40 30" TO WS-SCORES
-    MOVE "personalTopThree" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = " 40 40 30"
-TestCase "Personal top when there are less than 3"
-    MOVE " 30 70" TO WS-SCORES
-    MOVE "personalTopThree" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = " 70 30"
-TestCase "Personal top when there is only one"
-    MOVE " 40" TO WS-SCORES
-    MOVE "personalTopThree" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = " 40"
-TestCase "Latest score after personal top scores"
-    MOVE " 70 50 20 30" TO WS-SCORES
-    MOVE "personalTopThree" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    MOVE "latest" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-VALUE =  30
-TestCase "Scores after personal top scores"
-    MOVE " 30 50 20 70" TO WS-SCORES
-    MOVE "personalTopThree" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    MOVE "scores" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = " 30 50 20 70"
-TestCase "Latest score after personal best"
-    MOVE " 20 70 15 25 30" TO WS-SCORES
-    MOVE "personalBest" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    MOVE "latest" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-VALUE =  30
-TestCase "Scores after personal best"
-    MOVE " 20 70 15 25 30" TO WS-SCORES
-    MOVE "personalBest" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    MOVE "scores" TO WS-PROPERTY
-    PERFORM HIGH-SCORES
-    EXPECT WS-RESULT-STRING = " 20 70 15 25 30"
 
 
 
-     PASS:   1. List of scores                                                                  
-     PASS:   2. Latest score                                                                    
-     PASS:   3. Personal best                                                                   
-**** FAIL:   4. Personal top three from a list of scores                                        
-    EXPECTED <100 90 70>, WAS <100>
-**** FAIL:   5. Personal top highest to lowest                                                  
-    EXPECTED < 30 20 10>, WAS <>
-**** FAIL:   6. Personal top when there is a tie                                                
-    EXPECTED < 40 40 30>, WAS <>
-**** FAIL:   7. Personal top when there are less than 3                                         
-    EXPECTED < 70 30>, WAS <>
-**** FAIL:   8. Personal top when there is only one                                             
-    EXPECTED < 40>, WAS <>
-     PASS:   9. Latest score after personal top scores                                          
-     PASS:  10. Scores after personal top scores                                                
-     PASS:  11. Latest score after personal best                                                
-     PASS:  12. Scores after personal best                                                      
- 
- 12 TEST CASES WERE EXECUTED
-  7 PASSED
-  5 FAILED
-
-
+good code :
          IDENTIFICATION DIVISION.
        PROGRAM-ID. high-scores.
 
