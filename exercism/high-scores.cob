@@ -152,7 +152,7 @@ TestCase "Scores after personal best"
 
 
 
-   PASS:   1. List of scores                                                                  
+    PASS:   1. List of scores                                                                  
      PASS:   2. Latest score                                                                    
      PASS:   3. Personal best                                                                   
 **** FAIL:   4. Personal top three from a list of scores                                        
@@ -170,7 +170,7 @@ TestCase "Scores after personal best"
 **** FAIL:  10. Scores after personal top scores                                                
     EXPECTED < 30 50 20 70>, WAS <>
      PASS:  11. Latest score after personal best                                                
-     PASS:  12. Scores after personal best                                                      
+     PASS:  12. Scores after personal best                                                   
  
  12 TEST CASES WERE EXECUTED
   5 PASSED
