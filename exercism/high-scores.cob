@@ -37,17 +37,17 @@
       
                when WS-PROPERTY = "personalTopThree"
                    PERFORM CALCULATE-MAXIMUM
-                   MOVE WS-MAXIMUM TO RESULT(WS-RS)
+                   MOVE WS-MAXIMUM-H TO RESULT(WS-RS)
                    ADD 1 to WS-RS
                    MOVE "000" to SCORES(WS-MI)
       
                    PERFORM CALCULATE-MAXIMUM
-                   MOVE WS-MAXIMUM TO RESULT(WS-RS)
+                   MOVE WS-MAXIMUM-H TO RESULT(WS-RS)
                    ADD 1 to WS-RS
                    MOVE "000" to SCORES(WS-MI)
       
                    PERFORM CALCULATE-MAXIMUM
-                   MOVE WS-MAXIMUM TO RESULT(WS-RS)
+                   MOVE WS-MAXIMUM-H TO RESULT(WS-RS)
                    ADD 1 to WS-RS
                    MOVE "000" to SCORES(WS-MI)
 
@@ -75,6 +75,7 @@
                    MOVE WS-INDEX TO WS-MI
                END-IF
            END-PERFORM.
+
 
 
 
@@ -150,22 +151,26 @@ TestCase "Scores after personal best"
 
 
 
-PASS:   1. List of scores                                                                  
+   PASS:   1. List of scores                                                                  
      PASS:   2. Latest score                                                                    
      PASS:   3. Personal best                                                                   
 **** FAIL:   4. Personal top three from a list of scores                                        
-    EXPECTED <100 90 70>, WAS <010010>
+    EXPECTED <100 90 70>, WAS <>
 **** FAIL:   5. Personal top highest to lowest                                                  
-    EXPECTED < 30 20 10>, WAS <020020>
+    EXPECTED < 30 20 10>, WAS <>
 **** FAIL:   6. Personal top when there is a tie                                                
-    EXPECTED < 40 40 30>, WAS <040040>
+    EXPECTED < 40 40 30>, WAS <>
 **** FAIL:   7. Personal top when there are less than 3                                         
-    EXPECTED < 70 30>, WAS <030030>
+    EXPECTED < 70 30>, WAS <>
 **** FAIL:   8. Personal top when there is only one                                             
-    EXPECTED < 40>, WAS <040040>
+    EXPECTED < 40>, WAS <>
 **** FAIL:   9. Latest score after personal top scores                                          
     EXPECTED +00000000030.0000000, WAS +00000000000.0000000
 **** FAIL:  10. Scores after personal top scores                                                
     EXPECTED < 30 50 20 70>, WAS <>
      PASS:  11. Latest score after personal best                                                
-     PASS:  12. Scores after personal best 
+     PASS:  12. Scores after personal best                                                      
+ 
+ 12 TEST CASES WERE EXECUTED
+  5 PASSED
+  7 FAILED
