@@ -1,5 +1,19 @@
 # Learning_COBOL
 
+ressources
+https://fromzerotocobol.fr/
+https://www.tutorialspoint.com/cics/cics_overview.htm
+https://www.tutorialspoint.com/db2/index.htm
+https://www.ibmmainframer.com/cics-tutorial/customer-information-control-system/
+https://www.ibmmainframer.com/mainframe-tool/endevor-tutorial/
+https://www.mainframestechhelp.com/tutorials/cics/
+
+
+
+
+
+
+
 voir si je peux iterate sur un pds sans declarer chaque membre individuellement
 vsam
 package db2
