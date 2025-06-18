@@ -9,9 +9,9 @@ https://www.ibmmainframer.com/mainframe-tool/endevor-tutorial/
 https://www.mainframestechhelp.com/tutorials/cics/
 
 
-
-
-
+https://www.pluralsight.com/courses/systems-programming-ibm-z
+https://www.pluralsight.com/courses/cics-transaction-server-big-picture
+https://www.pluralsight.com/courses/cics-application-programming-fundamentals-cobol
 
 
 voir si je peux iterate sur un pds sans declarer chaque membre individuellement
