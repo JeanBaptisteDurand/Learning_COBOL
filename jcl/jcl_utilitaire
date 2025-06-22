@@ -1,0 +1,52 @@
+Utilitaire      | DDNAME        | Rôle                                                    | Obligatoire   | Remarques
+----------------|---------------|----------------------------------------------------------|---------------|-------------------------------
+IEBGENER        | SYSUT1        | Source à copier (PS ou membre PDS)                      | Oui           | PDS(MEMB) ou PS
+                | SYSUT2        | Destination (PS ou autre)                               | Oui           |
+                | SYSPRINT      | Messages de log                                         | Oui           |
+                | SYSIN         | Cartes de contrôle (souvent DUMMY)                      | Oui           |
+
+SORT (DFSORT)   | SORTIN        | Fichier à trier                                         | Oui           |
+                | SORTOUT       | Fichier trié résultant                                  | Oui           |
+                | SYSIN         | Instructions de tri (ex. SORT FIELDS=...)              | Oui           |
+                | SYSOUT        | Messages de tri                                         | Oui           |
+                | SORTWK01+     | Fichiers de travail temporaires                         | Non (auto)    | Peut être requis selon config
+
+ICETOOL         | TOOLIN        | Instructions ICETOOL (DISPLAY, COPY, etc.)             | Oui           |
+                | TOOLMSG       | Messages ICETOOL                                        | Oui           |
+                | DFSMSG        | Messages DFSORT                                         | Oui           |
+                | IN / OUT / Tn | DD logiques selon les instructions                     | Selon usage   |
+
+IEBCOPY         | SYSUT1        | PDS source                                              | Oui           |
+                | SYSUT2        | PDS destination                                         | Oui           |
+                | SYSPRINT      | Messages                                                | Oui           |
+                | SYSIN         | Commandes COPY                                          | Oui           |
+
+IEBUPDTE        | SYSUT1        | PDS à mettre à jour                                     | Oui           |
+                | SYSPRINT      | Messages                                                | Oui           |
+                | SYSIN         | Cartes ./ ADD, ./ REP                                   | Oui           |
+
+IDCAMS          | SYSIN         | Instructions AMS (DELETE, REPRO, DEFINE...)            | Oui           |
+                | SYSPRINT      | Messages de log                                         | Oui           |
+                | SYSUT1        | Fichier source (REPRO)                                  | Selon usage   |
+                | SYSUT2        | Fichier destination (REPRO)                             | Selon usage   |
+
+IEFBR14         | (libre)       | Dataset à créer ou supprimer                           | Oui           | Utilisé avec DISP=(NEW,CATLG)
+
+COMPIL COBOL    | SYSIN         | Source COBOL à compiler                                | Oui           |
+                | SYSLIN        | Code objet produit                                      | Oui           |
+                | SYSLIB        | Bibliothèque COPY                                       | Non (souhaité)|
+                | STEPLIB       | Lib contenant IGYCRCTL                                  | Oui           |
+                | SYSUT1-4      | Fichiers de travail                                     | Oui           |
+                | SYSPRINT      | Listing de compilation                                  | Oui           |
+
+LINK-EDIT       | SYSLIN        | Code objet en entrée                                    | Oui           |
+                | SYSLMOD       | Load module en sortie                                   | Oui           |
+                | SYSUT1        | Fichier de travail                                      | Oui           |
+                | SYSPRINT      | Messages du Linkage Editor                              | Oui           |
+
+RUN PROGRAMME   | STEPLIB       | Loadlib contenant le programme exécutable              | Non (utile)   |
+                | SYSIN         | Paramètres d’entrée                                     | Non (DUMMY)   |
+                | SYSPRINT      | Messages du programme                                   | Non (utilisé parfois) |
+                | SYSOUT        | Résultats des DISPLAY COBOL                             | Non (affichage console) |
+                | INFILE        | Fichier d’entrée logique (FD)                           | Selon usage   |
+                | OUTFILE       | Fichier de sortie logique (FD)                          | Selon usage   |
