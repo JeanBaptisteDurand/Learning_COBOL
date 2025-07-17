@@ -1,0 +1,8 @@
+CESN	Connexion à CICS
+CESF	Déconnexion
+CEDA	Administer les ressources
+CEMT	Contrôler / monitorer à chaud
+CECI	Tester des commandes EXEC CICS
+CEDF	Debug pas-à-pas
+CEBR	Voir les files temporaires (TSQ)
+CMAC	Aide sur messages d'erreur
